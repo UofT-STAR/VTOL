@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Miro Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .header {
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .miro-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        
+        .miro-iframe {
+            width: 100%;
+            height: 640px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .instructions h3 {
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .instructions li:before {
+            content: "•";
+            color: #ffd700;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .github-link {
+            margin-top: 20px;
+        }
+        
+        .github-link a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .github-link a:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .miro-iframe {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .miro-iframe {
+                height: 400px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Live Miro Collaboration Board</h1>
+            <p>Interactive whiteboard for real-time collaboration</p>
+        </div>
+        
+        <div class="miro-container">
+            <iframe 
+                class="miro-iframe"
+                src="https://miro.com/app/live-embed/uXjVJmuZ0Uo=/?focusWidget=3458764649439956695&embedMode=view_only_without_ui&embedId=318495700102" 
+                frameborder="0" 
+                scrolling="no" 
+                allow="fullscreen; clipboard-read; clipboard-write" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to use this board:</h3>
+            <ul>
+                <li>View the Miro board in real-time above</li>
+                <li>For full editing access, visit the direct Miro link</li>
+                <li>Collaborate with team members simultaneously</li>
+                <li>Use tools on the left sidebar (if you have edit permissions)</li>
+            </ul>
+        </div>
+        
+        <div class="github-link">
+            <a href="https://github.com/UofT-STAR/VTOL" target="_blank">
+                ⭐ View Project on GitHub
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading state
+            const iframe = document.querySelector('.miro-iframe');
+            iframe.addEventListener('load', function() {
+                console.log('Miro board loaded successfully');
+            });
+            
+            // Handle iframe errors
+            iframe.addEventListener('error', function() {
+                console.error('Failed to load Miro board');
+            });
+        });
+    </script>
+</body>
+</html>
